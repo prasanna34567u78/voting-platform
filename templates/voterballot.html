@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ .title }}</title>
+    <link rel="stylesheet" href="./css/voterballot.css">
+    <!-- <link rel="stylesheet" href="./css/style.css"> -->
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
+  <body>
+    {{ template "navbar1" . }}
+
+    {{if .voter.Verified}}
+    <div class=" container border-top my-5 shadow-lg p-3 mb-5 bg-white rounded" >
+        <span>
+ 
+            <h3>BallotPostions</h3>
+        </span>
+        <hr>
+        <div class="container  my-5 ">
+            {{range .candidate}}
+            <h4> Position Name: {{.Position}} </h4>
+            <div class="container ">
+                <div class="form-check my-3">
+                    <input class="form-check-input mx-3 my-2" type="radio" name="election" id="{{.ID}}" style="width: 20px;height:20px;">
+                    <label class="form-check-label" for="{{.ID}}">
+                        <h2>{{.FullName}}</h2>
+                      </label>
+                      <h5> <b>BIO:</b> {{.Bio}} </h5>
+                   
+                    
+                  </div>
+                <hr>
+            </div>
+            
+
+          
+           
+        </div>
+        {{end}}
+     </div>
+  
+  {{else}}
+  <div class="container text-center my-5 text-danger">
+    <h3>Before vote first Verifiy yourself by add unique id </h3>
+    <button class="btn btn-danger" ><a href="/verify" class="nav-link" >Verifiy</a></button>
+</div>
+  {{end}}
+
+    
+    
+    
+     
+
+   
+    <script defer src="./js/voterballot.js"></script>
+   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>

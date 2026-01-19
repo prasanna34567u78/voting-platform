@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{.title}}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/verify.css">
+  </head>
+  <body>
+    {{ template "navbar1" .}}
+    {{ if .voter.Verified }}
+    <div class="con">
+        <h1 class="text-center text-success">You alrady verified you can go and vote now </h1>
+    </div>
+  
+  {{else}}
+  <div class="container border-top my-3 shadow-lg p-3 mb-5 bg-white rounded ">
+    <hr>
+    <br>
+    <h5 class="text-center" >To get verify click the button to generate id and copy from alert paste on the below input and click submit</h5>
+    <br>
+    <div class="content text-center">
+
+        <button class="btn btn-danger" id="btn" data_id="{{ .voter.ID}}" >Generate id</button>
+        <br>
+        <form id="myform">
+            <div class="input">
+                <label for="unique">Unique ID</label> <br>
+                <input type="text" name="unique" unique="{{ .voter.ID }}" id="unique" placeholder="unique" required>
+               </div>
+               <div class="input">
+                <label for="email">Email ID</label> <br>
+                <input type="email" name="eamil" email="{{.voter.Email }}" id="email" placeholder="email" required>
+               </div>
+               <br>
+               <input value="submit" type="submit"   class="btn btn-success"></input> 
+    </form>
+    </div>
+
+
+  </div>
+
+  {{end}}
+    <div>
+
+    </div>
+  <script defer src="./js/verify.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>

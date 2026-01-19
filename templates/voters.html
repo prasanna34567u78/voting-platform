@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ .title }}</title>
+    <link rel="stylesheet" href="./css/voter.css">
+    <!-- <link rel="stylesheet" href="./css/style.css"> -->
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
+  <body>
+    {{ template "navbar" . }}
+    <div class=" container border-top my-5 shadow-lg p-3 mb-5 bg-white rounded" >
+       <span>
+
+           <h3>Voter List</h3>
+       </span>
+       <div class="container border  border-0 ">
+          <div>
+            <button type="button" id="new" class="btn btn-primary">New</button>
+          </div>
+          <div class="dialog" id="dialog">
+            <div class="dialog-content" >
+              
+                <span class="close" id="closeButton">&times;</span>
+                <h5>Add New Voter</h5>
+              
+                    <form id="myform">
+                      
+                       
+                       <div class="input">
+                        <label for="firstname">FirstName</label> <br>
+                        <input type="text" name="firstname" id="firstname" value="" placeholder="firstname" required>
+                       </div>
+                       <div class="input">
+                        <label for="lastname">LastName</label> <br>
+                        <input type="lastname" name="lastname" id="lastname" value="" placeholder="lastname" required>
+                       </div>
+                       <div class="input">
+                        <label for="email">Email</label> <br>
+                        <input type="email" name="email" id="email" value="" placeholder="email" required>
+                       </div>
+                        <div class="input">
+                            <label for="password">Password</label> <br>
+                            <input type="text" name="pasword" id="password" value="" placeholder="password" required>
+                        </div>
+                       
+                          
+                      
+                       
+                        <input value="Add" type="submit"   class="btn btn-primary"></input> 
+                      </form>
+
+               
+            </div>
+          </div>
+          <div class="container my-3">
+            <table class="table table-info">
+                <thead>
+                    <tr>
+                      <th scope="col">First Name</th>
+                      <th scope="col">Last Name</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Verified</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {{range .voter}}
+                  <tr class="table-info" id="{{.ID}}">
+                      <td class="table-info"> {{.FirstName}}</td>
+                      <td class="table-info"> {{.LastName}}</td>
+                      <td class="table-info"> {{.Email}}</td>
+                      <td class="table-info"> 
+                        {{if .Verified}}
+                        <p>yes</p>
+                        {{else}}
+                        <p>No</p>
+                        {{end}}
+                      </td>
+                      <td class="table-info">
+                          
+                                
+                    
+                              <button type="button" class="btn btn-danger delete_btn" data_id="{{.ID}}" >Delete</button>
+                         
+                      </td>
+                  </tr>
+                  {{end}}
+                  </tbody>
+            </table>
+
+          </div>
+       </div>
+    </div>
+   
+    <script defer src="./js/voter.js"></script>
+   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>

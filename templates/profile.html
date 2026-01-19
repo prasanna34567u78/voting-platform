@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{.title}}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
+  <body>
+    {{ template "navbar1" .}}
+    <div class="container border-top my-3 shadow-lg p-3 mb-5 bg-white rounded">
+        <div class="card" style="width: 20rem;position:relative;left: 450px;">
+            <h3 class="text-center">Profile</h3>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item text-center"> <b>FirstName</b> </li>
+                <li class="list-group-item text-center"> <b>{{.voter.FirstName}}</b> </li>
+              <li class="list-group-item text-center"> <b>LastName</b> </li>
+                <li class="list-group-item text-center"> <b>{{.voter.LastName}}</b> </li>
+              <li class="list-group-item text-center"> <b>Email</b> </li>
+                <li class="list-group-item text-center"> <b>{{.voter.Email}}</b> </li>
+              <li class="list-group-item text-center"> <b>Verified</b> </li>
+              <li class="list-group-item text-center">  
+                {{if .voter.Verified}}
+                <b> Yes</b>
+              
+              {{else}}
+              <b>NO</b>
+              {{end}}
+            </li>
+              
+             
+              
+            </ul>
+            <button class="btn btn-success">Edit Password</button>
+          </div>
+    </div>
+    <script>
+        document.getElementById("logout1").addEventListener("click", function() {
+            const URL = 'http://localhost:8000/logout'
+            fetch(URL,{
+              method:"POST",
+            }).then(response=>{
+              if(!response.ok){
+                  alert("Email alread exists")
+                throw new Error('Network response was not ok ')
+              }
+              return response.text()
+              }).then(data=>{
+              const ans = JSON.parse(data)
+              alert(ans.message)
+              location.href="http://localhost:8000/login"
+            })
+          })
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>

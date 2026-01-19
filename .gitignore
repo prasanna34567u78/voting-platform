@@ -1,0 +1,28 @@
+# Dependencies
+go.mod
+go.sum
+
+# Environment variables
+.env
+
+# Binaries
+*.exe
+*.exe~
+*.bin
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Build artifacts
+dist/
+build/
+coverage.out
