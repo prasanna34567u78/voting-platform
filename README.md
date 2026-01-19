@@ -172,5 +172,3 @@ After login as voter he/she can verified and then he/she can vote
 3.prasannakumar
 
 
-## thankyou 
-for algomox hiring team for giving this oppturinity doing this i Gained more knowledge and had greate expreience .if there is any mistake or if i forget to do you can suggest me i will do
