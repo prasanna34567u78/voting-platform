@@ -1,4 +1,4 @@
-# Algomox E-online voting system 
+# E-online voting system 
 This E - Voting System Was Developed With golan(gin Framework) and cassandra database. 
 
 
